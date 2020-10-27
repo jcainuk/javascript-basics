@@ -1,41 +1,80 @@
 const createPerson = (name, age) => {
-  // your code here
+  return {
+    //Parameters are values so make the keys.
+    name: name,
+    age: age
+  };
+
 };
 
 const getName = object => {
-  // your code here
+  //Practising dot notation to access name value
+  return object.name;
 };
 
 const getProperty = (property, object) => {
-  // your code here
+  //the test passes in a string "age" as a parameter
+  //you need to account for that by using bracket notation
+  //object."age" is completely wrong
+  return object[property];
 };
 
 const hasProperty = (property, object) => {
-  // your code here
+  return object.hasOwnProperty(property);
 };
 
 const isOver65 = person => {
-  // your code here
+  return person.age > 65;
 };
 
 const getAges = people => {
-  // your code here
+  //forEach doesn't  return things so use map
+  //map returns things so it might be easier here
+  return people.map((person) => person.age);
+
+  //OR with forEach:
+  //let ages = [];
+  //people.forEach((person) => {
+  //ages.push(person.age);
+  //})
 };
 
 const findByName = (name, people) => {
-  // your code here
+//PASSED
+  return people.find((person) => person.name === name);
+//what is the difference between filter and find?
+//It is because find() finds the first element that matches the filter AN ELEMENT!
+//Whereas filter() returns all elements that match the filter 
+//the result being an ARRAY no matter what
+
 };
 
-const findHondas = cars => {
-  // your code here
-};
+function findHondas(cars) {
+  //Here use filter to return an array of all Honda cars
+  return cars.filter((car) => car.manufacturer === "Honda");
+}
 
 const averageAge = people => {
-  // your code here
+  // Here use reduce to total up the ages on a loop
+  //Reduce loops through several rounds adding it all up
+  //Start it from index 0
+  //divide by number of people.length (total number of people)
+
+  return people.reduce((accumulator, currentValue) => accumulator + currentValue.age, 0) / people.length;
 };
 
 const createTalkingPerson = (name, age) => {
   // your code here
+  return {
+    //Parameters are values so make the keys.
+    name: name,
+    age: age,
+    //Make the function
+    introduce: function(greetingName){
+      return `Hi ${greetingName}, my name is ${this.name} and I am ${this.age}!`;
+    }
+  };
+
 };
 
 module.exports = {

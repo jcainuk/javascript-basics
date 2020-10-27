@@ -1,77 +1,148 @@
 const getNthElement = (index, array) => {
-  // your code here
+  while (index >= array.length) {
+
+    return array[index - array.length];
+
+  }
+
+  return array[index];
+
 };
 
 const arrayToCSVString = array => {
-  // your code here
+  return array.join(',');
 };
 
 const csvStringToArray = string => {
-  // your code here
+  return string.split(',');
 };
 
 const addToArray = (element, array) => {
-  // your code here
+  array.push(element);
 };
 
 const addToArray2 = (element, array) => {
-  // your code here
+  return array.concat(element);
 };
 
 const removeNthElement = (index, array) => {
-  // your code here
+  return array.splice(index, 1);
+
 };
 
-const numbersToStrings = numbers => {
-  // your code here
-};
+function numbersToStrings(numbers) {
+  return numbers.map(String);
+}
 
 const uppercaseWordsInArray = strings => {
-  // your code here
+  return strings.map(string => string.toUpperCase());
 };
 
-const reverseWordsInArray = strings => {
-  // your code here
-};
+function reverseWordsInArray(strings) {
 
-const onlyEven = numbers => {
-  // your code here
-};
+
+  return strings.map(string => string.split("").reverse().join(""));
+
+
+}
+
+function onlyEven(numbers) {
+  let evens = numbers.filter(number => number % 2 === 0);
+  return evens;
+}
 
 const removeNthElement2 = (index, array) => {
-  // your code here
+
+  let arrayCopy = [...array];
+  arrayCopy.splice(index, 1);
+  return arrayCopy;
 };
 
-const elementsStartingWithAVowel = strings => {
-  // your code here
-};
+function elementsStartingWithAVowel(strings) {
+  //create array of vowels
+  const vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
+  //filter allows us to loop on each element of array and do check on it
+  return strings.filter((word) => {
+    //create a variable for first letter of current word.
+    const firstLetter = word.charAt(0);
+    //verify if array of vowels contains word we are checking currently
+    return vowels.includes(firstLetter);
 
-const removeSpaces = string => {
-  // your code here
-};
+  });
+}
+
+
+function removeSpaces(string) {
+  return string.split(" ").join("");
+}
 
 const sumNumbers = numbers => {
-  // your code here
-};
+  //accumulator = total;
+  //currentValue = item in array
+  //0 = where we start in array (current value)
+  //reduce is like a for loop but cleaner
 
-const sortByLastLetter = strings => {
-  // your code here
-};
+  //our test array = [1, 3, 5, 6, 2, 8]
+
+  //Round 1: accumulator=0, currentValue=1, accumulator =>1
+  //Round 2: accumulator=1, currentValue=3, accumulator =>4
+  //Round 3: accumulator=4, currentValue=5, accumulator =>9
+  //Round 4: accumulator=9, currentValue=6, accumulator =>15
+  //Round 5: accumulator=15, currentValue=2, accumulator =>17
+  //Round 6: accumulator=17, currentValue=8, accumulator =>25
+
+  return numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+
+}
+
+
+
+function sortByLastLetter(strings) {
+  //Create a sort function with 2 parameters to compare: a and b
+  //Sort() loops over the elements
+  //As sort() is like a loop it will have multiple rounds
+  return strings.sort(function(element1,element2)  {
+
+  //Store a variable for last character of element1
+  //Length-1 because length of word is not zero-indexed! 
+  //.length is number of letters!
+    let lastA = element1.charAt(element1.length-1);
+
+  //Store a variable for last character of param element2
+    let lastB = element2.charAt(element2.length-1);
+
+  //Place element2 before element1
+    if (lastA > lastB) {
+      //1 corresponds to letter's UTF-16 code value
+      // 1 puts the letter earlier in sequence
+      return 1;
+
+//Place element1 after element2
+    } else if (lastA < lastB) {
+      //-1 corresponds to letter's UTF-16 code value
+      // -1 puts the letter later in sequence
+      return -1;
+
+//Leave order of element1 and element2 unchanged
+    } else 
+    // 0 means neither letter comes before or after the other
+      return 0;
+})}
 
 module.exports = {
-  getNthElement,
-  arrayToCSVString,
-  csvStringToArray,
-  addToArray,
-  addToArray2,
-  removeNthElement,
-  numbersToStrings,
-  uppercaseWordsInArray,
-  reverseWordsInArray,
-  onlyEven,
-  removeNthElement2,
-  elementsStartingWithAVowel,
-  removeSpaces,
-  sumNumbers,
-  sortByLastLetter
-};
+    getNthElement,
+    arrayToCSVString,
+    csvStringToArray,
+    addToArray,
+    addToArray2,
+    removeNthElement,
+    numbersToStrings,
+    uppercaseWordsInArray,
+    reverseWordsInArray,
+    onlyEven,
+    removeNthElement2,
+    elementsStartingWithAVowel,
+    removeSpaces,
+    sumNumbers,
+    sortByLastLetter
+  }
