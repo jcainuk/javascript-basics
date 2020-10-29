@@ -1,11 +1,15 @@
 const getNthElement = (index, array) => {
-  while (index >= array.length) {
 
-    return array[index - array.length];
+  //Rui solution:
 
-  }
+  return array[index % array.length]
 
-  return array[index];
+  //My old solution:
+  
+  //while (index >= array.length) {
+  //return array[index - array.//length];
+  //}
+  //return array[index];
 
 };
 
@@ -47,8 +51,9 @@ function reverseWordsInArray(strings) {
 }
 
 function onlyEven(numbers) {
-  let evens = numbers.filter(number => number % 2 === 0);
-  return evens;
+  //let evens = numbers.filter(number => number % 2 === 0);
+  //return evens;
+  return numbers.filter(number => number % 2 === 0);
 }
 
 const removeNthElement2 = (index, array) => {
@@ -101,48 +106,49 @@ function sortByLastLetter(strings) {
   //Create a sort function with 2 parameters to compare: a and b
   //Sort() loops over the elements
   //As sort() is like a loop it will have multiple rounds
-  return strings.sort(function(element1,element2)  {
+  return strings.sort(function (element1, element2) {
 
-  //Store a variable for last character of element1
-  //Length-1 because length of word is not zero-indexed! 
-  //.length is number of letters!
-    let lastA = element1.charAt(element1.length-1);
+    //Store a variable for last character of element1
+    //Length-1 because length of word is not zero-indexed! 
+    //.length is number of letters!
+    let lastA = element1.charAt(element1.length - 1);
 
-  //Store a variable for last character of param element2
-    let lastB = element2.charAt(element2.length-1);
+    //Store a variable for last character of param element2
+    let lastB = element2.charAt(element2.length - 1);
 
-  //Place element2 before element1
+    //Place element2 before element1
     if (lastA > lastB) {
       //1 corresponds to letter's UTF-16 code value
       // 1 puts the letter earlier in sequence
       return 1;
 
-//Place element1 after element2
+      //Place element1 after element2
     } else if (lastA < lastB) {
       //-1 corresponds to letter's UTF-16 code value
       // -1 puts the letter later in sequence
       return -1;
 
-//Leave order of element1 and element2 unchanged
-    } else 
-    // 0 means neither letter comes before or after the other
+      //Leave order of element1 and element2 unchanged
+    } else
+      // 0 means neither letter comes before or after the other
       return 0;
-})}
+  })
+}
 
 module.exports = {
-    getNthElement,
-    arrayToCSVString,
-    csvStringToArray,
-    addToArray,
-    addToArray2,
-    removeNthElement,
-    numbersToStrings,
-    uppercaseWordsInArray,
-    reverseWordsInArray,
-    onlyEven,
-    removeNthElement2,
-    elementsStartingWithAVowel,
-    removeSpaces,
-    sumNumbers,
-    sortByLastLetter
-  }
+  getNthElement,
+  arrayToCSVString,
+  csvStringToArray,
+  addToArray,
+  addToArray2,
+  removeNthElement,
+  numbersToStrings,
+  uppercaseWordsInArray,
+  reverseWordsInArray,
+  onlyEven,
+  removeNthElement2,
+  elementsStartingWithAVowel,
+  removeSpaces,
+  sumNumbers,
+  sortByLastLetter
+}
