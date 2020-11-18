@@ -23,7 +23,7 @@ const round = a => {
 };
 
 const roundUp = a => {
- return Math.ceil(a);
+  return Math.ceil(a);
 };
 
 const roundDown = a => {
